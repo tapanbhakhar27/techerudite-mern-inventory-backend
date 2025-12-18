@@ -8,6 +8,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send(`hey! This is tpn's express server.`);
+});
+
 const startServer = async () => {
   try {
     await connectDB();
