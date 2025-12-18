@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const env = require("dotenv");
+const cors = require("cors");
 const connectDB = require("./src/config/db");
 env.config();
 
@@ -10,6 +11,14 @@ const categoryRoutes = require("./src/routes/category.routes");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
