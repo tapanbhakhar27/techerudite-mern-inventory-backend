@@ -1,5 +1,6 @@
 const express = require("express");
 const env = require("dotenv");
+const connectDB = require("./src/config/db");
 env.config();
 
 const PORT = process.env.PORT || 3000;
@@ -9,7 +10,7 @@ app.use(express.json());
 
 const startServer = async () => {
   try {
-    // await connectDB();
+    await connectDB();
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });
